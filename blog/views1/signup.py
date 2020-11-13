@@ -47,9 +47,14 @@ class SignupView(View):
                 return render(request, 'signup.html', {'form':form,'error': "Password not matched"})
             hashedpassword=make_password(password)
             user = User(name=name, password=hashedpassword)
-            user.save()
+            
             print(user)
-            messages.success(request,"Your acccount created successfully login now")
-            return render(request, 'login.html')
+            if form.is_valid():
+                human=True
+                user.save()
+                messages.success(request,"Your acccount created successfully login now")
+                return render(request, 'login.html')
+            else:
+                return render(request,"signup.html",{"form":form, "error":"invalid captcha"})
         except:
             pass

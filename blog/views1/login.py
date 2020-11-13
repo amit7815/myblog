@@ -28,7 +28,7 @@ class LoginView(View):
                     return redirect(LoginView.return_url)
                 return redirect('/myblogs')
             else:
-                return render(request, 'login.html', {'error': "email or password is invalid "})
+                return render(request, 'login.html', {'error': "username or password is invalid "})
 
         except:
-            return render(request, 'login.html', {'error': "email or password is invalid "})
+            return render(request, 'login.html', {'error': "username or password is invalid "})
