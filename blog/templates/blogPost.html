@@ -1,0 +1,38 @@
+{% extends 'header.html' %}
+{% comment %} {% load extras %} {% endcomment %}
+{% block title %} blogPost{% endblock title %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-3 p-4">
+  <br>
+  <br>
+  <br>
+  <img src="{{post.pic.url}}" class="w-100 h-50" alt="">
+   <a  href="/blog/create" class="btn btn-block btn-outline-success mt-3">Create Your Blog</a>
+</div>
+<div style="background-color:white;" class=" col-md-9 no-gutters overflow-hidden flex-md-row mb-4  h-md-250 position-relative my-4 cbox">
+        <div class=" p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-0 text-primary">Article by {{post.user}}</strong>
+          <h3 >{{post.title}}</h3>
+          <p class="blog-post-meta">by <a href="#">{{post.user}}</a></p>
+          {% comment %} <div class="mb-1 text-muted">{{post.timestamp}}</div> {% endcomment %}
+          <p class="card-text mb-auto text-justify">{{post.content}}</p>
+         
+          {% comment %} <div class="my-2">
+         <a href="/blog/create" role="button" class="btn btn-outlineprimary">Create Blog</a>
+          </div> {% endcomment %}
+        </div>
+         </div>
+         </div>
+      </div>
+
+{% endblock content %}
+
+
+
+
+
+
+

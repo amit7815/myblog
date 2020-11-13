@@ -1,0 +1,31 @@
+{% extends 'header.html' %}
+
+{% block title %} blogHome{% endblock title %}
+{% comment %} {% block blogactive %}active{% endblock blogactive %} {% endcomment %}
+{% block content %}
+<div class="container my-4">
+    <h1><b>Coding Articles By Blogging</b></h1>
+    <hr>
+    {% for post in allPosts %}
+    <div class="row">
+    
+    <div style="background-color:white;" class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative my-4 cbox">
+      <div class="img-fluid col-md-3">
+      <img src="{{post.pic.url}}" class="w-100 h-100 p-4" alt="">
+    </div>
+        <div class="col-md-9 p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-0 text-primary">Article by {{post.user}}</strong>
+          <h3 >{{post.title}}</h3>
+          {% comment %} <div class="mb-1 text-muted">{{post.timestamp}}</div> {% endcomment %}
+          <p class="card-text mb-auto text-justify">{{post.content|truncatechars:300}}</p>
+          <div class="my-2">
+          <a href="/blog/{{post.sno}}" role="button" class="btn btn-block btn-outline-success mt-3">Continue reading</a>
+          
+          </div>
+        </div>
+         
+      </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock content %}

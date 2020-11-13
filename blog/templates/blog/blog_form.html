@@ -1,0 +1,16 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container col-md-4 mx-auto">
+<h1 class="my-4 text-center"><b>Create Blog in Blogging </b></h1>
+<hr>
+<form class="ui form" enctype="multipart/form-data" method="post" class="px-2">
+    {% csrf_token %}
+{{form|crispy}}
+    <input class="btn btn-block btn-outline-success mt-3" type="submit">
+</form>
+
+</div>
+{% endblock content %}

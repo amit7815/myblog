@@ -1,0 +1,40 @@
+{% extends 'header.html' %}
+
+{% block title %} blogHome{% endblock title %}
+{% comment %} {% block blogactive %}active{% endblock blogactive %} {% endcomment %}
+{% block content %}
+<div class="container my-4">
+<div>
+    <h1><b>My Blogs</b></h1>
+    <a href="/blog/create" role="button" class="btn btn-block btn-outline-success"><b>Create Blog</b></a>
+    </div>
+    <hr>
+  {% if posts %}
+     
+  
+    {% for post in posts %}
+    <div class="row">
+    <div style="background-color:white;" class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative my-4 cbox">
+        <div class="img-fluid col-md-3">
+      <img src="{{post.pic.url}}" class="w-100 h-100 p-4" alt="">
+    </div>
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Article by {{post.user}}</strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          {% comment %} <div class="mb-1 text-muted">{{post.timestamp}}</div> {% endcomment %}
+          <p class="card-text mb-auto text-justify">{{post.content|truncatechars:300}}</p>
+          <div class="my-2">
+          <a href="/blog/{{post.sno}}" role="button" class="btn btn-block btn-outline-success mt-2">Continue reading</a>
+          {% comment %} <a href="/blog/create" role="button" class="btn btn-success">Create Blog</a> {% endcomment %}
+          </div>
+        </div>
+         
+      </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h3><b>You have not created any blog till now</b></h3>
+        {% comment %} <a href="/blog/create" role="button" class="btn btn-block btn-outline-success">Create Blog</a> {% endcomment %}
+  {% endif %}
+</div>
+{% endblock content %}
